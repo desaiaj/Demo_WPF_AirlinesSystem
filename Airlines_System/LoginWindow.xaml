@@ -1,0 +1,31 @@
+﻿<Window x:Class="MidTerm_AjayDesai.Login"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MidTerm_AjayDesai"
+        mc:Ignorable="d"
+         Title="Login" Height="273" Width="356" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="14" WindowStyle="ThreeDBorderWindow" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" Background="Black">
+    <Grid AutomationProperties.HelpText="Login here to access system" HorizontalAlignment="Center" Width="356" Height="257" VerticalAlignment="Center">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="112*"/>
+            <ColumnDefinition Width="223*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.Background>
+            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                <GradientStop Color="Black"/>
+                <GradientStop Color="White" Offset="1"/>
+            </LinearGradientBrush>
+        </Grid.Background>
+        <Label x:Name="lblUsername" Content="Username:" VerticalAlignment="Center" FontSize="16" Foreground="#FFFFFCFC" Height="30" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" HorizontalAlignment="Right" Margin="0,10,5,0"/>
+        <Label x:Name="lblPassword" Content="Password:" VerticalAlignment="Top" FontSize="16" Foreground="#FFFFFCFC" HorizontalContentAlignment="Stretch" VerticalContentAlignment="Stretch" Height="30" Width="Auto" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,5,0"/>
+        <TextBox x:Name="txtUser" Grid.Column="1" TextWrapping="Wrap" UndoLimit="98" FontSize="16" Height="30" VerticalAlignment="Center" Margin="1,10,20,0" HorizontalAlignment="Stretch"/>
+        <PasswordBox x:Name="pbPass" Grid.Column="1" Grid.Row="1" VerticalAlignment="Top" FontSize="16" Height="30" Margin="1,0,20,0"/>
+        <Button x:Name="btnLogin" Grid.Row="1" Content="Login" Click="btnLogin_Click" FontSize="16" Foreground="#FF491010" Height="27" Width="59" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,-18,0"/>
+        <Button x:Name="btnClear" Grid.Column="1" Grid.Row="1" Content="Clear" HorizontalAlignment="Center"  FontSize="16" Click="btnClear_Click" Foreground="#FF491010" Height="27" Margin="0,50,0,51" Width="59"/>
+    </Grid>
+</Window>

@@ -1,0 +1,76 @@
+﻿<Window x:Class="MidTerm_AjayDesai.PassengersWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MidTerm_AjayDesai"
+        mc:Ignorable="d"
+        Title="Passengers Window" Width="800" Background="#FF98F6FF" MinHeight="515" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FF3C3C3C">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+            <ColumnDefinition Width="1*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="32"></RowDefinition>
+            <RowDefinition Height="1*"></RowDefinition>
+            <RowDefinition Height="50">
+            </RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="Insert" Name="cmInsert" Click="btnInsert_Click"></MenuItem>
+                <MenuItem Header="Update" Name="cmUpdate" Click="btnUpdate_Click"></MenuItem>
+                <MenuItem Header="Delete" Name="cmDelete" Click="btnDelete_Click"></MenuItem>
+            </ContextMenu>
+        </Grid.ContextMenu>
+        <DockPanel HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="3">
+            <Menu x:Name="MenuMain" HorizontalContentAlignment="Left" DockPanel.Dock="Left" VerticalAlignment="Top" Height="23" HorizontalAlignment="Stretch" FontSize="14" Background="Black" Foreground="#FFFFFDFD" ClipToBounds="True" SnapsToDevicePixels="True" AutomationProperties.IsOffscreenBehavior="Onscreen" OpacityMask="#FFA7A7A7" >
+                <MenuItem x:Name="MenuFile" Header="_File" HorizontalAlignment="Center" VerticalAlignment="Bottom" Padding="10,0,8,0" Background="Black" BorderBrush="Black" BorderThickness="1,1,1,1">
+                    <MenuItem x:Name="MenuNew" Header="_New" Foreground="#FFFFFDFD" Background="Black" BorderBrush="Black" Visibility="Visible"/>
+                    <MenuItem x:Name="MenuSave" Header="_Save" Foreground="#FFFFFDFD" Background="Black" ClipToBounds="True" BorderBrush="Black"/>
+                    <Separator></Separator>
+                    <MenuItem x:Name="MenuQuit" Header="_Quit" Foreground="#FFFFFDFD" Background="Black" ClipToBounds="True" BorderBrush="Black" GotFocus="MenuQuit_GotFocus" LostFocus="MenuQuit_LostFocus" Click="MenuQuit_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MenuEdit" Header="_Edit" Padding="8,0,8,0" Background="Black" BorderBrush="Black" BorderThickness="1,1,1,1">
+                    <MenuItem x:Name="MenuInsert" Header="_Insert" Background="Black" Foreground="White" BorderBrush="Black" Click="MenuInsert_Click"/>
+                    <MenuItem x:Name="MenuUpdate" Header="_Update" Background="Black" Foreground="White" BorderBrush="Black" Click="MenuUpdate_Click"/>
+                    <MenuItem x:Name="MenuDelete" Header="_Delete" Background="Black" Foreground="White" BorderBrush="Black" Click="MenuDelete_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MenuHomepage" Header="Homepage" Padding="8,0,8,0" Background="Black" BorderBrush="Black" BorderThickness="1,1,1,1">
+                    <MenuItem x:Name="ViewCustomers" Header="View Customers" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewCustomers_Click"/>
+                    <MenuItem x:Name="ViewFlights" Header="View Flights" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewFlights_Click"/>
+                    <MenuItem x:Name="ViewAirlines" Header="View Airlines" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewAirlines_Click"/>
+                    <MenuItem x:Name="ViewPassengers" Header="View Passengers" Background="Black" Foreground="White" BorderBrush="Black" Click="ViewPassengers_Click"/>
+                </MenuItem>
+                <MenuItem x:Name="MenuHelp" Header="_Help" Padding="8,0,8,0" Background="Black" BorderBrush="Black" BorderThickness="1,1,1,1" Click="MenuHelp_Click"/>
+            </Menu>
+        </DockPanel>
+        <Label Content="Flights Page" FontSize="22" Grid.Column="0" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" HorizontalContentAlignment="Center" Margin="5,4,5,5" BorderBrush="#FFECFE00" BorderThickness="0,0,0,1" Foreground="White" Grid.ColumnSpan="3" Padding="0,2,0,0">
+            <Label.Background>
+                <SolidColorBrush Color="#FF979797" Opacity="0.255"/>
+            </Label.Background>
+        </Label>
+
+        <Label Content="Passengers" Grid.Row="2" Grid.Column="0" FontSize="16" Foreground="White" Background="#FF4D0000" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" BorderThickness="0,0,1,0" Margin="5,0,5,0" VerticalAlignment="Top"/>
+
+        <Label Content="Customers" Grid.Row="2" Grid.Column="1" FontSize="16" Foreground="White" Background="#FF4D0000" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="5,0,5,0"></Label>
+        <Label Content="Flight Departure City" Grid.Row="2" Grid.Column="2" FontSize="16" Foreground="White" Background="#FF4D0000" HorizontalContentAlignment="Center" VerticalContentAlignment="Stretch" Margin="5,0,5,0"></Label>
+
+        <ListBox x:Name="lbPassengers" SelectionChanged="lbPassengers_SelectionChanged" Loaded="lbPassengers_Loaded" Margin="5,5,5,5" MinHeight="362" ItemsSource="{Binding}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="10,10,10,0" FontSize="14" Cursor="Hand" Background="Black" BorderBrush="White" Foreground="White" SelectedValuePath="ID" Grid.Row="3" DisplayMemberPath="ID"/>
+
+        <ListBox x:Name="lbCustomers" Loaded="lbCustomers_Loaded" Margin="5,5,5,5" MinHeight="362" ItemsSource="{Binding}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="10,10,10,0" FontSize="14" Cursor="Hand" Background="Black" BorderBrush="White" Foreground="White" DisplayMemberPath="Name" SelectedValuePath="ID" Grid.Row="3" Grid.Column="1">
+        </ListBox>
+
+        <ListBox x:Name="lbFlights" Margin="5,5,5,5" MinHeight="362" ItemsSource="{Binding}" VerticalContentAlignment="Stretch" HorizontalContentAlignment="Stretch" Padding="10,10,10,0" FontSize="14" Cursor="Hand" Background="Black" BorderBrush="White" Foreground="White" DisplayMemberPath="DepartureCity" SelectedValuePath="ID" Grid.Row="3" Grid.Column="3" Loaded="lbFlights_Loaded">
+        </ListBox>
+
+        <Button x:Name="btnDelete" Content="Delete" Padding="60,0,60,0" FontSize="18" Margin="45,5,5,5" Foreground="Red" Background="Black" BorderBrush="White" BorderThickness="2,2,2,2" ToolTip="Delete the selected Flight" Click="btnDelete_Click" Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Left" VerticalAlignment="Stretch" HorizontalContentAlignment="Center"/>
+        <Button x:Name="btnInsert" Content="Insert" Margin="45,5,5,5" Padding="60,0,60,0" FontSize="16" Foreground="White" Background="Black" BorderThickness="2,2,2,2" BorderBrush="White" Click="btnInsert_Click" Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Center"/>
+        <Button x:Name="btnUpdate" Content="Update" Padding="60,0,60,0" FontSize="16" Margin="5,5,45,5" BorderBrush="White" Foreground="White" BorderThickness="2,2,2,2" Background="Black" Click="btnUpdate_Click" Grid.Row="4" Grid.ColumnSpan="3" HorizontalAlignment="Right"/>
+        <Border Grid.Row="4" BorderBrush="White" BorderThickness="0 2 0 0" Grid.ColumnSpan="3" Margin="0,0,0,29" />
+    </Grid>
+</Window>
